@@ -16,3 +16,8 @@ def get_guessed_word(secret_word, letters_guessed):
     in the word that the user has not yet guessed, shown an _ (underscore) instead.
     '''
     # FILL IN YOUR CODE HERE...
+
+def spaceman(secret_word):
+    return secret_word
+
+spaceman(load_word())

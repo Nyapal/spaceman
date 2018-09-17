@@ -4,48 +4,46 @@ def load_word():
    f = open('words.txt', 'r')
    words_list = f.readlines()
    f.close()
-
    words_list = words_list[0].split(' ')
    secret_word = random.choice(words_list)
    return secret_word
 
-letters_guessed = []
+def is_word_guessed(secret_word, letters_guessed):
+
+def get_guessed_word(secret_word, letters_guessed):
+    for char in secret_word:
+        if char not in letters_guessed:
+            word += char
+        else:
+            word += "_"
+#def get_available_letters(letters_guessed):
 
 def spaceman(secret_word):
-    #let the user know how many letters the secretWord contains
-    print('The secret word contains ' + str(len(secret_word)) + ' letters')
+    #name = input("What's your name? ")
 
-    i = 0
-    while i < 7:
-        letters_guessed.append(input('Enter A Letter: '))
-        i += 1
+    #print('Hey ' + name + ' Welcome to Spaceman!')
+    print('Your secret word has ' + str(len(secret_word)) + ' letters. Start guessing....')
+
+    letters_guessed = []
+    max_guesses = 7
+    failed_attempts = 0
+
+    while max_guesses > failed_attempts:
+        letter_guessed.append(input('Guess A Character: '))
+
+        for char in secret_word:
+            if char in letters_guessed:
+                print(char)
+                print(letters_guessed)
+
+            else:
+                failed_attempts += 1
 
 
-    if i == 0:
-        print(letters_guessed)
-    elif i == 1:
-        print(letters_guessed)
-    elif i == 2:
-        print(letters_guessed)
-    elif i == 3:
-        print(letters_guessed)
-    elif i == 4:
-        print(letters_guessed)
-    elif i == 5:
-        print(letters_guessed)
-    elif i == 6:
-        print(letters_guessed)
-    else:
-        print('Game Over! The secret word was' + secret_word)
 
-    '''
 
-    * Ask the user to guess one letter per round.
-    * The user should receive feedback immediately after each guess
-      about whether their guess appears in the computer's word.
-    * After each round, you should also display to the user the
-      partially guessed word so far, as well as letters that the
-      user has not yet guessed.
-    '''
-# secret_word = load_word()
+
+
+
+
 spaceman(load_word())
