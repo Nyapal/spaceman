@@ -8,42 +8,56 @@ def load_word():
    secret_word = random.choice(words_list)
    return secret_word
 
-def is_word_guessed(secret_word, letters_guessed):
-
 def get_guessed_word(secret_word, letters_guessed):
+    letter = ""
     for char in secret_word:
         if char not in letters_guessed:
-            word += char
+            letter += char
         else:
-            word += "_"
-#def get_available_letters(letters_guessed):
+            letter += "_"
+    return letter
+
+def is_word_guessed(secret_word, letters_guessed):
+    for char in secret_word:
+        if char not in letters_guessed:
+            return False
+    return True
 
 def spaceman(secret_word):
-    #name = input("What's your name? ")
-
-    #print('Hey ' + name + ' Welcome to Spaceman!')
-    print('Your secret word has ' + str(len(secret_word)) + ' letters. Start guessing....')
+    name = input("What's your name? ")
+    print(name + ' Welcome to Spaceman! Your secret word has ' + str(len(secret_word)) + ' letters. And you only have 7 attempts. Start guessing...')
 
     letters_guessed = []
-    max_guesses = 7
-    failed_attempts = 0
+    attempts = 0
 
-    while max_guesses > failed_attempts:
-        letter_guessed.append(input('Guess A Character: '))
+    while attempts < 7:
+        guess = input("Guess A Character: ")
+        letters_guessed.append(guess)
 
-        for char in secret_word:
-            if char in letters_guessed:
-                print(char)
-                print(letters_guessed)
-
-            else:
-                failed_attempts += 1
+        if guess in secret_word:
+            print("Good job.")
+        else:
+            attempts += 1
+            print("Incorrect.")
 
 
+        if is_word_guessed(secret_word, letters_guessed) is True:
+            print("You won!")
+            attempts = 8
 
-
-
-
-
+        if attempts == 1:
+            print("6 attempts left.")
+        elif attempts == 2:
+            print("5 attempts left.")
+        elif attempts == 3:
+            print("4 attempts left.")
+        elif attempts == 4:
+            print("3 attempts left.")
+        elif attempts == 5:
+            print("2 attempts left.")
+        elif attempts == 6:
+            print("1 attempt left.")
+        elif attempts == 7:
+            print("Game Over.  You lose " + name + ". The word was " + secret_word)
 
 spaceman(load_word())
