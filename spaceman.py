@@ -25,7 +25,7 @@ def is_word_guessed(secret_word, letters_guessed):
 
 def spaceman(secret_word):
     name = input("What's your name? ")
-    print(name + ' Welcome to Spaceman! Your secret word has ' + str(len(secret_word)) + ' letters. And you only have 7 attempts. Start guessing...')
+    print(name + ', Welcome to Spaceman! Your secret word has ' + str(len(secret_word)) + ' letters. And you only have 7 attempts. Start guessing...')
 
     letters_guessed = []
     attempts = 0
@@ -42,7 +42,7 @@ def spaceman(secret_word):
 
 
         if is_word_guessed(secret_word, letters_guessed) is True:
-            print("You won!")
+            print("Congrats on guessing the secret word: " + secret_word + '. You Win!')
             attempts = 8
 
         if attempts == 1:
@@ -60,4 +60,4 @@ def spaceman(secret_word):
         elif attempts == 7:
             print("Game Over.  You lose " + name + ". The word was " + secret_word)
 
-spaceman(load_word())
+spaceman('hello')
